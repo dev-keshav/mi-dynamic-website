@@ -31,48 +31,45 @@ export default function SelectBoxDropDown({
 }: SelectBoxProps) {
   const [selectedValue, setSelectedValue] = React.useState<string | undefined>(
     undefined
-  )
+  );
   const [searchedOptions, setSearchedOptions] =
-    React.useState<Option[]>(options)
+    React.useState<Option[]>(options);
 
   const handleOptionChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const newOptions = options
+    const newOptions = options;
 
     setSearchedOptions((prev) =>
       prev.length === 0
         ? options
         : newOptions.filter(({ value }) => value.includes(e.target.value))
-    )
-  }
+    );
+  };
 
   const onSelectItem = (val: string) => {
-    setSelectedValue(val)
+    setSelectedValue(val);
     // Store the selected value in sessionStorage
-    sessionStorage.setItem(placeholder!, val)
-    console.log(val)
-  }
+    sessionStorage.setItem(placeholder!, val);
+    console.log(val);
+  };
 
   React.useEffect(() => {
     // Set the default value from sessionStorage when the component mounts
-    const storedValue = sessionStorage.getItem(placeholder!)
+    const storedValue = sessionStorage.getItem(placeholder!);
     if (storedValue) {
-      onSelectItem(storedValue)
-      setSelectedValue(storedValue)
+      onSelectItem(storedValue);
+      setSelectedValue(storedValue);
     }
-  }, [placeholder])
+  }, [placeholder]);
 
   return (
     <Autocomplete
       sx={{ width: 200 }}
-      // freeSolo
-      // disableClearable
       disableCloseOnSelect
       options={searchedOptions}
       groupBy={(option) => option.label.charAt(0).toUpperCase()} // Group options by first letter
       getOptionLabel={(option) => option.label}
       value={options.find((o) => o.label === selectedValue) || null}
       onChange={(event, newValue) => onSelectItem(newValue?.label || "")}
-
       renderInput={(params) => (
         <TextField
           sx={{
@@ -80,7 +77,7 @@ export default function SelectBoxDropDown({
           }}
           {...params}
           fullWidth
-          label="Country"
+          label={selectedValue ? undefined : "Country"}
           InputProps={{
             ...params.InputProps,
             type: "search",
@@ -107,5 +104,5 @@ export default function SelectBoxDropDown({
         </Box>
       )}
     />
-  )
+  );
 }

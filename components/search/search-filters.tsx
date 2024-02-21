@@ -227,11 +227,11 @@ const handleCityClick = (city: string) => {
       <AccordionItem value="Date" >
       <AccordionTrigger
             icon={false}
-            className="h-[44px] pl-2  py-0 text-sm uppercase shadow-accordion-item overflow-x-hidden"
+            className="h-[44px] overflow-x-hidden  py-0 pl-2 text-sm uppercase shadow-accordion-item"
             onClick={() => setOpen(true)}>
         <Calendar size={20} color="#f78020"/>
 
-        <input type="text" className=" mr-auto ml-2 " placeholder="01/30/2019-05/01/2023" />
+        <input type="text" className=" ml-2 mr-auto " placeholder="01/30/2019-05/01/2023" />
         
       </AccordionTrigger>
       </AccordionItem>
@@ -250,7 +250,7 @@ const handleCityClick = (city: string) => {
             {Object.entries(countryCounts).map(( [country, count] ) => (
                 <ListItem
                   key={`${country}`}
-                  className="my-[2px] px-0 hover:bg-transparent"
+                  className="my-[2px] ml-6 px-0 hover:bg-transparent"
                 >
                   <div className="flex justify-between text-[12px] uppercase text-dark-jungle-green" onClick = {()=> handleCountryfilter(country )}>
                     <div>{country}</div>
@@ -332,7 +332,7 @@ const handleCityClick = (city: string) => {
           </AccordionTrigger>
 
           <AccordionContent className="overflow-x-hidden">
-          <ul className="max-h-[150px] px-2 py-4 ">
+          <ul className="ml-6 max-h-[150px] px-2 py-4 ">
             {Object.entries(hsCodeCounts).map(( [hscount, count] ) => (
                 <ListItem
                   key={`${hscount}`}
@@ -413,7 +413,7 @@ const handleCityClick = (city: string) => {
         </AccordionTrigger>
 
         <AccordionContent>
-          <div className=" px-2 py-2" style={{height:'200px'}}>
+          <div className=" p-2" style={{height:'200px'}}>
           <div className="mb-8"> 
         <SliderInput title="Net Weight Kg" sub=""/></div>
         <div className="mb-8">

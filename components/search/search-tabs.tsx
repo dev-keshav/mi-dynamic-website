@@ -61,10 +61,10 @@ export default function SearchTabs({
   const [title2, settitle2] = useState("")
   const { setImporter, setExporter, setTrade, importer, trade, exporter } =
     useData()
-  const type = params.type
+  const type = params?.type
   useEffect(() => {
     // Update tooltip content based on params.type
-    if (params.type === "importer") {
+    if (params?.type === "importer") {
       interface importDataState {
         total_importers: number
         foreign_suppliers?: number
@@ -80,7 +80,7 @@ export default function SearchTabs({
       settitle2(``)
       /////Total Foreign Suppliers -
       //  ${'foreign_suppliers' in importer ? importer.foreign_suppliers : 0}`);
-    } else if (params.type === "exporter") {
+    } else if (params?.type === "exporter") {
       interface exportDataState {
         total_exporters: number
         foreign_buyers?: number
@@ -94,7 +94,7 @@ export default function SearchTabs({
       settitle1(`Exporters in ${paramsData.country} - ${data.total_exporters}`),
         settitle2(``)
       ////Foreign Buyers -
-    } else if (params.type === "trade") {
+    } else if (params?.type === "trade") {
       interface DataState {
         total_shipments: number
         total_value_usd: number
@@ -375,7 +375,7 @@ export default function SearchTabs({
   }
 
   return (
-    <Tabs defaultValue={params.type} className="w-full p-0  ">
+    <Tabs defaultValue={params?.type} className="w-full p-0  ">
       <div style={{ display: "flex", justifyContent: "space-between" }}>
         <div>
           {tabItem.map((x, index) => (
@@ -398,7 +398,7 @@ export default function SearchTabs({
                 <>
                   <p key={key}>{` ${value}`}</p>
                   <button
-                    className="cursor-pointer ml-2 font-bold"
+                    className="ml-2 cursor-pointer font-bold"
                     onClick={handletabclick(key)}
                   >
                     x
@@ -448,7 +448,7 @@ export default function SearchTabs({
             formatOptionLabel={formatOptionLabel}
             components={{ SingleValue: customSingleValue }}
             styles={customStyles}
-            className="w-[200px]  nowrap"
+            className="nowrap  w-[200px]"
             placeholder="Reporting Country"
           />
 
@@ -461,12 +461,12 @@ export default function SearchTabs({
         /> */}
         </div>
       </div>
-      <TabsList className="h-auto w-full rounded-none bg-transparent p-0 border-none">
+      <TabsList className="h-auto w-full rounded-none border-none bg-transparent p-0">
         {searchTabConfig.map(({ label, value, icon }) => (
           <TabsTrigger
             key={`${label}_${value}`}
             value={value}
-            className="mx-[3px] mb-3 h-[42px] w-1/4 rounded-none  border-[1px] border-solid border-b-solid bg-white py-0 text-base font-bold text-dark-liver data-[state=active]:bg-dark-liver data-[state=active]:text-white data-[state=active]:border-0"
+            className="border-b-solid mx-[3px] mb-3 h-[42px] w-1/4  rounded-none border-[1px] border-solid bg-white py-0 text-base font-bold text-dark-liver data-[state=active]:border-0 data-[state=active]:bg-dark-liver data-[state=active]:text-white"
             onClick={() => {
               debugger
               router.replace(handelLocation(value, pathname, searchParams), {

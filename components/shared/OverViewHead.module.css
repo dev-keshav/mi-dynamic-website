@@ -1,0 +1,28 @@
+
+.OverViewHead {
+    z-index: 999;
+    padding: 12px 0;
+    height: auto;
+    display: block;
+    position: relative;
+    margin-top: -24px;
+}
+
+.top{
+    width: 100%;
+    text-align: center;
+    color: #000;
+    margin-top: 10px;
+}
+.top a {
+    color: #f78020;
+    font-family: Roboto, sans-serif;
+    padding: 12px 8px;
+    font-size: 15px;
+    font-weight: 500;
+    background: #fff;
+    border-radius: 6px;
+    margin: 0 5px;
+    text-decoration: none;
+    padding-bottom: 5px;
+} 

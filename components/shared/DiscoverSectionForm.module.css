@@ -1,0 +1,132 @@
+.image2Icon {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  margin-top: 22px;
+}
+.signupButtonChild {
+  border-radius: var(--br-51xl);
+  background-color: #c25700;
+  width: 234px;
+  height: 49px;
+}
+.signupButtonChild:hover{
+  background-color: #c25700;
+}
+.paragraphChild {
+  background-color: var(--color-navajowhite);
+  border-right: 1px solid var(--color-black);
+  box-sizing: border-box;
+  width: 400px;
+  height: auto;
+}
+.pivotYourBusiness2 {
+  margin-top: 0;
+  font-size: 54px;
+  font-weight: 600;
+  font-family: Poppins, sans-serif;
+  color: #000;
+}
+.pivotYourBusiness {
+  margin-block-start: 0;
+  margin-block-end: 0px;
+}
+.span1 {
+  font-size: var(--font-size-29xl);
+}
+.span {
+  font-weight: 500;
+  font-family: var(--font-poppins);
+}
+.with {
+  line-height: 55%;
+}
+.globalTradeData1 {
+  font-size: var(--font-size-23xl);
+  line-height: 0%;
+}
+.withGlobalTradeData {
+  margin: 0;
+}
+.pivotYourBusinessContainer {
+  white-space: pre-wrap;
+  display: inline-block;
+  width: 600px;
+  height: 146px;
+}
+.paragraph {
+  width: 600px;
+  height: 146px;
+  margin-top: 150px;
+}
+
+.enterYourEmail {
+  line-height: 49%;
+  font-weight: 500;
+}
+.inputText,
+.signupButtonChild {
+  width: 534px;
+  height: 66px;
+}
+
+.signUpFor {
+  line-height: 31%;
+  font-weight: 500;
+}
+.signupButton {
+  position: absolute;
+  top: -11px;
+  left: 288px;
+  width: 234px;
+  height: 49px;
+  color: var(--color-white);
+}
+.discoverSection {
+  position: relative;
+  font-size: var(--font-size-35xl);
+  color: var(--color-black);
+  font-family: var(--font-poppins);
+}
+.inputTextButton {
+  position: relative;
+  font-size: var(--font-size-35xl);
+  color: var(--color-black);
+  font-family: var(--font-poppins);
+  margin-top: 50px;
+}
+
+@media (max-width: 800px){
+  .withGlobalTradeData {
+    line-height: 50px;
+  }
+
+   
+.paragraph{
+  width: 100%;
+  margin-top: 50px;
+  height: auto;
+}
+.paragraphChild, .pivotYourBusinessContainer{
+  width: 100%;
+  height: auto;
+}
+.pivotYourBusiness, .pivotYourBusiness2{
+  font-size: 40px;
+  margin-bottom: 0;
+}
+.globalTradeData1{
+  font-size: 36px;
+}
+.inputTextButton, .inputText, .signupButtonChild{
+  width: 100%;
+}
+.signupButton {
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 66px;
+}
+  
+}

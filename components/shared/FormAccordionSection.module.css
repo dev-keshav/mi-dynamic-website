@@ -1,0 +1,39 @@
+.AccordionHeadti.accordion{
+    width: 100%;
+  }
+  .accordion-button{
+    background: #ff8813 none repeat scroll 0 0;
+      border: 1px solid transparent;
+      border-radius: 0px;
+      color: #fff;
+      font-size: 22px;
+      font-weight: 600;
+      text-align: left;
+      letter-spacing: 0.6px;
+      padding: 12px 20px 12px 40px;
+      font-family: Poppins, sans-serif;
+      position: relative;
+      transition: all 0.3s ease 0s;
+  
+  }
+  .accordion-button:not(.collapsed){
+    background: #ff8813 none repeat scroll 0 0;
+    border: 1px solid transparent;
+    color: #fff;
+  }
+  .accordion-button::after{
+    color: #fff;
+    background-image: url(../public/down.png);
+  }
+  .accordion-button:not(.collapsed)::after{
+    color: #fff;
+    background-image: url(../public/up.png);
+  }
+  .accordion-item{
+    margin-bottom: 30px;
+  }
+  .accordion-button:focus{
+    border-color: transparent;
+    box-shadow: none;
+  }
+

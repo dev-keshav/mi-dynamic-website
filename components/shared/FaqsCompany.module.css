@@ -1,0 +1,25 @@
+.FaqsCompany {
+    width: 100%;
+    background: #fff;
+    padding: 50px 0;
+    position: relative;
+}
+.supplyHeadFaq {
+    width: 100%;
+    margin: 0 auto;
+    text-align: center;
+    padding-top: 35px;
+    background: #fff;
+    padding-bottom: 35px;
+    box-shadow: 0 3px 9px 0 #cac0c0;
+    margin-bottom: 25px;
+}
+.supplyHeadFaq h2{
+    font-size: 1.75rem;
+    color: #212529;
+    font-family: 'Nunito Sans',sans-serif!important;
+}
+.faqsQuestions{
+    width: 100%;
+    margin-top: 40px;
+}

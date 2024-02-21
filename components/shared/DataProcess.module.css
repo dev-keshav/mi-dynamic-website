@@ -1,0 +1,64 @@
+.image4Icon {
+    object-fit: cover;
+  }
+  .dataProcessAnd {
+    color: #000;
+    font-family: Poppins, sans-serif;
+    font-size: 36px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 65px;
+  }
+  .theRawData {
+    font-size: var(--font-size-base);
+    line-height: 219%;
+    color: var(--color-dimgray-200);
+    display: inline-block;
+    text-align: justify;
+  }
+  .dataProcess {
+    width: 100%;
+    height: auto;
+    padding: 60px 0;
+    font-family: var(--font-poppins);
+    background-color: white;
+  }
+  .platformPageOfMiChild {
+  
+    background-color: var(--color-whitesmoke);
+    width: 100%;
+    height: 2036px;
+  }
+  .platformPageOfMi {
+    position: relative;
+    background-color: var(--color-white);
+    width: 100%;
+    height: auto;
+  }
+  .lern_extPivot {
+    padding: 60px 40px 25px 20px;
+}
+.Explthrous {
+  width: 100%;
+  display: block;
+  padding: 20px 0;
+}
+.Explthrous h2{
+  text-align: center;
+  color: #000;
+  font-family: Poppins, sans-serif;
+  font-size: 42px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 147%;
+}
+@media (max-width: 800px) {
+  .dataProcessAnd{
+    line-height: 50px;
+    margin-bottom: 25px;
+  }
+  .lern_extPivot{
+    padding: 30px 0;
+  }
+  
+}

@@ -1,0 +1,100 @@
+/* styles.css */
+
+.litdtaSrch {
+    margin: 9px;
+    text-align: center;
+    padding: 40px 22px;
+    border: 2px dotted #f78020;
+    border-radius: 0;
+    width: auto;
+    max-width: 250px;
+  }
+  
+  .litdtaSrch h3
+ {
+  color: #f78020;
+  padding-left: 1px;
+  padding-right: 1px;
+  font-size: 40px;
+  font-weight: 600; 
+  display: inline-flex;
+  transition: color 1s;
+}
+.litdtaSrch p{
+  margin: 0;
+  padding: 0;
+  letter-spacing: 0.51px;
+  font-size: 15.5px;
+  font-family: Helvetica;
+  transition: color 1s;
+  color: black;
+}
+
+.litdtaSrch:hover {
+  background-color: #f78020;
+  box-shadow: 0 0 15px #f78020;
+}
+
+.litdtaSrch:hover h3,
+.litdtaSrch:hover p {
+  color: white;
+}
+.image-carousel {
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+}
+
+.scroll-container {
+  display: flex;
+  animation: scrollAnimation 10s linear infinite; /* Adjust the duration and timing function as needed */
+}
+
+.paused {
+  animation-play-state: paused;
+}
+
+.client-image {
+  width: 150px;
+  height: 100px;
+  object-fit: contain;
+  margin-right: 10px;
+  transition: transform 0.3s ease-in-out;
+}
+
+.client-image:hover {
+  transform: scale(1.2);
+}
+
+@keyframes scrollAnimation {
+  0% {
+    transform: translateX(0, 0, 0);
+  }
+  100% {
+    transform: translateX(calc(-160px * 5)); /* Adjust the image width and number of images */
+  }
+}
+
+@media (max-width: 767px) {
+  .scroll-container {
+    /* Adjust the animation duration and potentially the direction for smaller screens */
+    animation: scrollAnimation 20s linear infinite;
+  }
+
+  .client-image {
+    /* Reduce the size of the images for mobile screens */
+    width: 100px;
+    height: 75px;
+    margin-right: 5px; /* Smaller margin */
+  }
+
+  @keyframes scrollAnimation {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      /* Adjust the translateX value based on the new image width and number of images */
+      transform: translateX(calc(-110px * 5)); /* Example calculation */
+    }
+  }
+}

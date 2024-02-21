@@ -1,0 +1,49 @@
+
+.PopupBg {
+    background: #fff1e6;
+    padding: 45px 0;
+    width: 100%;
+    height: auto;
+}
+.PopupBg:hover {
+    background: #443e3a;
+    cursor: pointer;
+}
+.overheadPup {
+    width: 60%;
+    margin: 0 auto;
+    text-align: center;
+    color: #000;
+}
+.overheadPup p{
+    margin-bottom: 15px;
+    font-size: 16px;
+    color: #000;
+}
+.overheadPup img {
+    margin-bottom: 15px;
+}
+.butndemo{
+    color: #fff;
+    border-color: #f78020;
+    background: #f78020;
+    padding: 0.375rem 33px;
+    height: calc(1.5em + 0.75rem + 2px);
+    text-align: center;
+    text-transform: uppercase;
+    transition: 0.5s;
+    color: #fff;
+    display: inline-block;
+    font-size: 14px;
+    font-weight: 500;
+    border-radius: 0;
+    letter-spacing: 1px;
+    border: 0;
+}
+.butndemo:hover {
+    box-shadow: 0 5px 15px 0 #bdbcbc;
+    color: #fff;
+}
+.PopupBg:hover .overheadPup p{
+    color: #fff;
+}

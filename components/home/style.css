@@ -1,0 +1,50 @@
+/* styles.css */
+@keyframes animatedBackground {
+    to {
+      background-size: 100% 100%;
+    }
+  }
+  
+  .ah-headline {
+    font-size: 41px;
+    color: #000000;
+    font-family: 'Roboto', sans-serif;
+    line-height: 52px;
+    font-weight: 500;
+    letter-spacing: 0;
+  }
+  
+  .ah-words-wrapper b {
+    display: inline;
+    position: relative;
+    opacity: 1;
+    z-index: 9;
+    padding-left: 2px;
+    background-image: linear-gradient(
+      #fbce9a 50%,
+      #fbce9a 50%,
+      #fbce9a 85%,
+      #fbce9a 85%,
+      #fbce9a 100%
+    );
+    background-repeat: no-repeat;
+    background-size: 0% 100%;
+    animation: animatedBackground 2s cubic-bezier(0.645, 0.045, 0.355, 1) 0.5s forwards;
+  }
+ 
+  .vewrealmarbtn {
+    width: 100%;
+    display: block;
+    margin: 25px 0;
+}
+
+.btn.shdedemobtn {
+    color: #fff;
+    background: #000000;
+    border: 1px solid #e2e2e2;
+    padding: 12px 20px;
+    border-radius: 5px;
+    font-size: 15px;
+    font-weight: 400;
+    transition: 1s;
+}

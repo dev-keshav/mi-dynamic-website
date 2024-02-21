@@ -1,0 +1,68 @@
+.indiaImport_header{
+    margin-inline: 4vw;
+    margin-top: 4vh
+}
+.indiaImport_header h1{
+    font-size: 
+}
+.indiaImport_header p{
+    color: gray;
+}
+.indiaImport_five_div{
+    display: flex;
+    flex-direction: row;
+    align-item: center;
+    justify-content: space-between;
+    margin-right: 5vw;
+    margin-block: 4vh;
+    margin-bottom: 8vh;
+}
+.OverViewHead {
+    z-index: 999;
+    padding: 12px 0;
+    height: auto;
+    display: block;
+    position: relative;
+    margin-top: -24px;
+}
+
+.top{
+    width: 100%;
+    text-align: left;
+    color: #000;
+    margin-top: 10px;
+}
+.top a {
+    color: #f78020;
+    font-family: Roboto, sans-serif;
+    padding: 12px 8px;
+    font-size: 15px;
+    font-weight: 500;
+    background: #fff;
+    border-radius: 6px;
+    margin: 0 5px;
+    text-decoration: none;
+    padding-bottom: 5px;
+} 
+
+.heading{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    margin-inline: 10vw;
+    margin-block: 10vh;
+}
+.icdport_div{
+    display: flex;
+}
+.icdport_heading{
+    width: 30vw;
+    margin-right: 5vw;
+}
+.icdport_heading p{
+    line-height: 28px;
+    font-weight: 400;
+}
+.icdport_graph{
+    width: 60vw;
+}

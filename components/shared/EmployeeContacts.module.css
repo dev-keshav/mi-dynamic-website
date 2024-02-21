@@ -1,0 +1,58 @@
+.EmployeeContacts{
+    width: 100%;
+    background: #fff;
+    padding: 50px 0;
+    position: relative;
+}
+.supplyHead{
+    width: 72%;
+    margin: 0 auto;
+    text-align: center;
+    padding-top: 20px;
+    padding-bottom: 40px;
+    font-family: Roboto, sans-serif;
+}
+.supplyHead h2 {
+    font-family: Roboto, sans-serif;
+    font-size: 30px;
+    font-weight: 600;
+}
+
+.tablFullwidth{
+    width: 100%;
+}
+.tablFullwidth thead tr th {
+    text-align: left;
+    border: 1px solid #dee2e6;
+    background: #727272;
+    color: #fff;
+    font-family: Roboto, sans-serif;
+    font-weight: 400;
+    font-size: 13px;
+    padding: 0.42rem 0.75rem;
+    vertical-align: middle;
+}
+.tablFullwidth tbody tr td {
+    font-size: 13px;
+    padding: 0.42rem 0.75rem;
+    vertical-align: middle;
+    font-family: Roboto, sans-serif;
+    text-align: left;
+    border: 1px solid #dee2e6;
+    background-color: transparent;
+}
+.colorblack{
+    color: #000!important;
+}
+.tablFullwidth tbody tr td a img {
+    width: 24px;
+    cursor: pointer;
+}
+.tablFullwidth tbody tr td a {
+    color: #f78020;
+    text-decoration: none;
+}
+.blur{
+    filter: blur(3px);
+    user-select: none;
+}

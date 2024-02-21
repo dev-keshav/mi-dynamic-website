@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunk_N_E=self.webpackChunk_N_E||[]).push([[34],{55034:function(t,e,s){s.r(e);var u=s(57437),a=s(27265),n=s(39190),r=s(2265);e.default=()=>{let[t,e]=(0,r.useState)(a.It);return(0,u.jsx)(n.AgChartsReact,{options:t})}}}]);

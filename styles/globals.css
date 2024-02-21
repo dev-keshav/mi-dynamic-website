@@ -1,0 +1,139 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 47.4% 11.2%;
+
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 47.4% 11.2%;
+
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 47.4% 11.2%;
+
+    --primary: 30 100% 55%;
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+
+    --destructive: 0 100% 50%;
+    --destructive-foreground: 210 40% 98%;
+
+    --ring: 215 20.2% 65.1%;
+
+    --radius: 0.5rem;
+  }
+
+  .dark {
+
+    --muted: 223 47% 11%;
+    --muted-foreground: 215.4 16.3% 56.9%;
+
+ 
+
+
+    --border: 216 34% 17%;
+    --input: 216 34% 17%;
+
+    --card: 224 71% 4%;
+    --card-foreground: 213 31% 91%;
+
+    --primary: 30 100% 55%;
+    --primary-foreground: 222.2 47.4% 1.2%;
+
+    --secondary: 222.2 47.4% 11.2%;
+    --secondary-foreground: 210 40% 98%;
+
+    --destructive: 0 63% 31%;
+    --destructive-foreground: 210 40% 98%;
+
+    --ring: 216 34% 17%;
+
+    --radius: 0.5rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  html {
+    font-size: 16px;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+}
+@layer utilities {
+  .bg-gradient {
+    background-image: linear-gradient(
+      to right,
+      #f8992f 0,
+      #f4d03f 51%,
+      #f8992f 100%
+    );
+    transition: background 1s ease-in-out; /* Adjust duration and easing as needed */
+  }
+
+  .bg-gradient-hover:hover {
+    background-image: linear-gradient(
+      to right,
+      #f4d03f 0,
+      #f8992f 51%,
+      #f4d03f 100%
+    );
+  }
+
+  .shadow-md-custom:hover {
+    box-shadow: 0 5px 15px 0 #bdbcbc; /* Specify your desired shadow color */
+  }
+
+  .btn-styles {
+    background-image: linear-gradient(
+      to right,
+      #f8992f 0,
+      #f4d03f 51%,
+      #f8992f 100%
+    );
+    color: #fff !important;
+    font-size: 15px;
+    letter-spacing: 0.6px;
+    border-radius: 2px;
+    text-align: center;
+    transition: 0.5s;
+    background-size: 200% auto;
+    border-color: transparent;
+    background-color: transparent;
+  }
+
+  .btn-styles:hover {
+    background-position: right center;
+    font-weight: 400 !important;
+    box-shadow: 0 2px 5px 0 #7d7d7d;
+  }
+
+  #sticky {
+    background-color: #fff;
+  }
+  
+  #sticky.stick {
+    position: fixed;
+    display: block;
+    width: 100%;
+    top: 0;
+    z-index: 10000;
+  }
+}

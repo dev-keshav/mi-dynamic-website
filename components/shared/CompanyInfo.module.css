@@ -1,0 +1,72 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz,wght@6..12,200;6..12,300;6..12,400;6..12,500;6..12,600;6..12,700;6..12,800;6..12,900&display=swap");
+
+.CompanyInfo{
+    width: 100%;
+    display: block;
+    padding: 30px 0 45px;
+    background: #f3f3f4;
+    font-family: 'Nunito Sans', sans-serif;
+}
+.profImg{
+    text-align: center;
+    box-shadow: 0 0 9px -7px #9b9b9b;
+    padding: 47px 14px;
+    border-radius: 6px;
+    background: #fff;
+    width: 80%;
+    margin: 35px 0 auto;
+}
+.ProfDescrpnt{
+    width: 100%;
+    padding: 30px 0;
+}
+.faicons {
+    color: #fd9852;
+    cursor: auto;
+    font-size: 15px;
+    margin-right: 5px;
+}
+.turnOvrInfo{
+    list-style: none;
+    display: flex;
+    justify-content: left;
+    padding-left: 0;
+    width: 100%;
+    flex-wrap: wrap;
+    gap: 3rem;
+    margin-bottom: 0;
+    align-items: baseline;
+    text-align: left;
+}
+.ProfDescrpnt h1{
+    font-size: 34px;
+    line-height: 45px;
+    font-weight: 600;
+    color: #414140;
+}
+.ProfDescrpnt .mb15{
+    margin-bottom: 15px;
+}
+
+.ProfDescrpnt p{
+    color: #68676a;
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 28px;
+    font-family: Roboto, sans-serif;
+    letter-spacing: 0.7px;
+    margin: 0;
+}
+
+.turnOvrInfo li{
+    display: inline-block;
+    padding: 15px 15px 0;
+    color: #272727;
+    font-size: 15px;
+    line-height: 28px;
+    font-family: Roboto, sans-serif;
+    letter-spacing: 0.5px;
+}
+.turnOvrInfo li b{
+    font-size: 23px;
+}

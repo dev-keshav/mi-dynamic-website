@@ -1,0 +1,93 @@
+.image3Icon {
+  width: 100%;
+  height: 547px;
+  object-fit: cover;
+}
+.readyToOwn {
+  text-align: center;
+  font-size: var(--font-size-23xl);
+  line-height: 63%;
+  font-weight: 600;
+  display: inline-block;
+  margin: 20px 0 60px;
+  padding: 20px 0;
+  width: 100%;
+  line-height: 65px;
+}
+
+.couMarkt{
+  color: #000;
+  font-size: 56px;
+  display: inline-block;
+  margin-bottom: 30px;
+  line-height: 51px;
+  font-weight: 600;
+  font-family: Poppins, sans-serif;
+}
+.readyToOwnSection {
+  width: 100%;
+  height: auto;
+  text-align: left;
+  font-size: var(--font-size-lg);
+  color: var(--color-black);
+  font-family: var(--font-poppins);
+  padding: 50px 0;
+}
+
+.awidedata {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  float: left;
+  width: 100%;
+  justify-content: right;
+  gap: 0rem;
+  white-space-collapse: preserve-breaks;
+  font-family: Poppins, sans-serif;
+}
+.list {
+  width: 255px;
+  text-align: center;
+  background: rgba(231, 231, 231, 0.27);
+  border-radius: 20px;
+  padding: 30px 20px;
+  margin: 10px;
+  box-shadow: 0px 4px 4px 0px rgba(99, 99, 99, 0.24);
+  flex-shrink: 0;
+  transition: 1s;
+  height: 215px;
+}
+.diflxtExplr h3 {
+  color: #000;
+  font-size: 56px;
+  display: inline-block;
+  margin-bottom: 30px;
+  line-height: 51px;
+  font-weight: 600;
+  font-family: Poppins, sans-serif;
+}
+.registeredCompanies{
+  font-size: 17px;
+  color: #000;
+  text-transform: uppercase;
+  line-height: 21px;
+  font-weight: 500;
+  font-family: Poppins, sans-serif;
+  letter-spacing: 0;
+}
+@media (max-width: 800px) {
+.list{
+  width: 44%;
+  margin: 8px;
+  padding: 40px 20px;
+}
+.couMarkt{
+  font-size: 44px;
+  margin-bottom: 15px;
+}
+.awidedata{
+  justify-content: left;
+  margin-top: 30px;
+}
+
+}

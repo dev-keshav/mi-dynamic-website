@@ -1,18 +1,19 @@
 import React, { useEffect, useState } from "react"
 import Image from "next/image"
-import { Icons } from "../icons"
+import { usePathname, useRouter, useSearchParams } from "next/navigation"
 
 import {
   Select,
   SelectContent,
   SelectItem,
+  SelectLabel,
   SelectTrigger,
   SelectValue,
-  SelectLabel,
 } from "@/components/ui/select"
 
+import { Icons } from "../icons"
 import { Input } from "../ui/input"
-import { useRouter,usePathname, useSearchParams } from "next/navigation"
+import { dataTypes } from "@/constants"
 
 interface Option {
   value: string
@@ -38,46 +39,58 @@ export default function SelectBox({
   defaultValue = "",
   isSearchable = false,
 }: SelectBoxProps) {
-  const [selectedValue, setSelectedValue] = useState<string | undefined>(undefined);
+  const [selectedValue, setSelectedValue] = useState<string | undefined>(
+    undefined
+  )
   const [searchedOptions, setSearchedOptions] = useState<Option[]>(options)
-  
+
   const handleOptionChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const newOptions = options
- 
+
     setSearchedOptions((prev) =>
       prev.length === 0
         ? options
         : newOptions.filter(({ value }) => value.includes(e.target.value))
     )
   }
-  
+  // console.log("hhhhhhhhh----------> ", searchedOptions)
+
   const onSelectItem = (val: string) => {
     setSelectedValue(val)
     // Store the selected value in sessionStorage
-    sessionStorage.setItem(placeholder!, val);
-    console.log(val);
-  };
+    sessionStorage.setItem(placeholder!, val)
 
- 
+  }
+
 
   useEffect(() => {
     // Set the default value from sessionStorage when component mounts
-    const storedValue = sessionStorage.getItem(placeholder!);
+    const storedValue = sessionStorage.getItem(placeholder!)
     if (storedValue) {
-      onSelectItem(storedValue);
-      setSelectedValue(storedValue);
+      onSelectItem(storedValue)
+      setSelectedValue(storedValue)
     }
-  }, [placeholder]);
+  }, [placeholder])
+
+
+
+  // console.log("Select value -------> ", dataTypes)
+
 
   return (
-    <Select onValueChange={onSelectItem} defaultValue={defaultValue as string} value={selectedValue} >
+    <Select
+      onValueChange={onSelectItem}
+      defaultValue={defaultValue as string}
+      value={selectedValue}
+    >
       <SelectTrigger className={className}>
-        <SelectValue  placeholder={placeholder} />
+        <SelectValue placeholder={placeholder} />
       </SelectTrigger>
-      <SelectContent style={{ position: 'fixed'}} className="z-1000">
+      <SelectContent style={{ position: "fixed" }} className="z-1000">
         {isSearchable && (
           <div className="w-full p-2">
-            <Input style={{ width: '10vw'}}
+            <Input
+              style={{ width: "10vw" }}
               onChange={(e) => handleOptionChange(e)}
               onKeyDown={(e: React.KeyboardEvent<HTMLInputElement>) =>
                 e.stopPropagation()
@@ -86,13 +99,19 @@ export default function SelectBox({
             />
           </div>
         )}
-        {searchedOptions.map((option) => (<>
-
-          {!option.lock ? 
-          
-          <SelectItem onSelect={val => console.log(val)} key={option.value} value={option.value}>
-          <div style={{ cursor: 'pointer'}} className="flex items-center gap-4">
-            {/* {option?.icon && (
+        {searchedOptions.map((option) => (
+          <>
+            {!option.lock ? (
+              <SelectItem
+                onSelect={(val) => console.log(val)}
+                key={option.value}
+                value={option.value}
+              >
+                <div
+                  style={{ cursor: "pointer" }}
+                  className="flex items-center gap-4"
+                >
+                  {/* {option?.icon && (
               // country flag
               <Image
                 src={option?.icon as string}
@@ -102,27 +121,31 @@ export default function SelectBox({
                 unoptimized={true}
               />
             )} */}
-            {option.label}
-          </div>
-        </SelectItem>
-          : 
-          <SelectItem onSelect={val => console.log(val)} key={option.value} value={option.value} disabled>
-          <div className="flex items-center gap-4">
-            {option?.icon && (
-              <Image
-                src={option?.icon as string}
-                alt="option-icon"
-                height={32}
-                width={32}
-                unoptimized={true}
-              />
+                  {option.label}
+                </div>
+              </SelectItem>
+            ) : (
+              <SelectItem
+                onSelect={(val) => console.log(val)}
+                key={option.value}
+                value={option.value}
+                disabled
+              >
+                <div className="flex items-center gap-4">
+                  {option?.icon && (
+                    <Image
+                      src={option?.icon as string}
+                      alt="option-icon"
+                      height={32}
+                      width={32}
+                      unoptimized={true}
+                    />
+                  )}
+                  <Icons.lockColored className="inline h-6 w-8" />
+                  {option.label}
+                </div>
+              </SelectItem>
             )}
-            <Icons.lockColored className="inline h-6 w-8" />
-            {option.label}
-          </div>
-        </SelectItem>
-          }
-          
           </>
         ))}
       </SelectContent>

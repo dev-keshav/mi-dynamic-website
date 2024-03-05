@@ -4,10 +4,18 @@ import { useEffect } from "react"
 import Image from "next/image"
 import Link from "next/link"
 
+import {
+  countries,
+  countries_with_flag,
+  dataTypes,
+  searchTypes,
+} from "@/constants"
+
 import { cn } from "@/lib/utils"
 import Breadcrumbs from "@/components/shared/breadcrumbs"
 
 import SelectBox from "../form/select-box"
+import SelectCountryBtn from "./select-country-btn"
 
 const statsConfig = [
   { title: "Total Import Value", des: "US$ 101 Million" },
@@ -103,6 +111,12 @@ const breadcrumbItems = [
   },
 ]
 
+const countryValues = countries_with_flag.map((type) => ({
+  value: type.countrie,
+  icon: `/4x3/${type.code}.svg`,
+  label: type.countrie,
+}))
+
 const AgraImportData = () => {
   const stickyRelocate = () => {
     const windowTop = window.scrollY
@@ -140,10 +154,15 @@ const AgraImportData = () => {
           {"Agra ICD Port    (June 2019 to May 2020)"}
         </div>
         <div className="my-5 flex flex-col gap-5 md:flex-row md:gap-24">
-          <div className="flex h-full w-[210px] gap-3 rounded-none border-black bg-transparent px-3 py-2 text-base  text-black ring-1 ring-black focus:ring-0">
+          {/* <div className="flex h-full w-[210px] gap-3 rounded-none border-black bg-transparent px-3 py-2 text-base  text-black ring-1 ring-black focus:ring-0">
             <Image src="/india.png" alt="india" height={22} width={22} unoptimized={true}/>
             <div>India</div>
-          </div>
+          </div> */}
+          <SelectCountryBtn
+            placeholder="Country"
+            options={countryValues}
+            isSearchable
+          />
           <SelectBox
             placeholder="Agra IDC Port"
             className="h-full w-fit rounded-none border-black bg-transparent text-base  text-black  ring-black focus:ring-0"

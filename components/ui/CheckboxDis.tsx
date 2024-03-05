@@ -4,11 +4,11 @@ import { CheckIcon } from '@radix-ui/react-icons';
 
 
 
-interface CheckboxDemoProps {
+interface CheckboxDemoDisProps {
     label: string;
   }
   
-  const CheckboxDemo: React.FC<CheckboxDemoProps> = ({ label }) => (
+  const CheckboxDemoDis: React.FC<CheckboxDemoDisProps> = ({ label }) => (
     <form>
       <div className="flex flex-row-reverse items-center justify-between ">
         <Checkbox.Root
@@ -17,7 +17,7 @@ interface CheckboxDemoProps {
           id={label}
         >
           <Checkbox.Indicator className="text-violet11">
-            <CheckIcon />
+            {/* <CheckIcon /> */}
           </Checkbox.Indicator>
         </Checkbox.Root>
         <label
@@ -36,4 +36,4 @@ interface CheckboxDemoProps {
   
   
 
-export default CheckboxDemo;
+export default CheckboxDemoDis;

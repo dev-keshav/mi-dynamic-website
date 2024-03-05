@@ -1,27 +1,27 @@
-import * as React from "react";
-import Image from "next/image";
-import Autocomplete from "@mui/material/Autocomplete";
-import Box from "@mui/material/Box";
-import TextField from "@mui/material/TextField";
+import * as React from "react"
+import Image from "next/image"
+import Autocomplete from "@mui/material/Autocomplete"
+import Box from "@mui/material/Box"
+import TextField from "@mui/material/TextField"
 
 interface Option {
-  value: string;
-  label: string;
-  icon?: string | boolean;
-  lock?: boolean;
+  value: string
+  label: string
+  icon?: string | boolean
+  lock?: boolean
 }
 
 interface SelectBoxProps {
-  className?: string;
-  placeholder?: string;
-  value?: string;
-  defaultValue?: string | number;
-  options: Option[];
-  isSearchable?: boolean;
-  isReportingCountry?: boolean;
+  className?: string
+  placeholder?: string
+  value?: string
+  defaultValue?: string | number
+  options: Option[]
+  isSearchable?: boolean
+  isReportingCountry?: boolean
 }
 
-export default function SelectBoxDropDown({
+export default function SelectCountryBtn({
   className,
   placeholder,
   value,
@@ -34,7 +34,6 @@ export default function SelectBoxDropDown({
   );
   const [searchedOptions, setSearchedOptions] =
     React.useState<Option[]>(options);
-  const [isDropdownOpen, setIsDropdownOpen] = React.useState(false);
 
   const handleOptionChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const newOptions = options;
@@ -64,26 +63,24 @@ export default function SelectBoxDropDown({
 
   // Close the dropdown when selectedValue changes
   React.useEffect(() => {
-    setIsDropdownOpen(false);
+    const dropdown = document.querySelector(".MuiAutocomplete-popupIndicator");
+    if (dropdown) {
+      dropdown.click(); // Simulate a click on the dropdown indicator to close it
+    }
   }, [selectedValue]);
 
   return (
     <Autocomplete
-      sx={{ width: 200 }}
+      sx={{ width: '15vw' }}
+      size="small"
       disableCloseOnSelect
-      open={isDropdownOpen}
-      onOpen={() => setIsDropdownOpen(true)}
-      onClose={() => setIsDropdownOpen(false)}
       options={searchedOptions}
-      groupBy={(option) => option.label.charAt(0).toUpperCase()} // Group options by the first letter
+      groupBy={(option) => option.label.charAt(0).toUpperCase()} // Group options by first letter
       getOptionLabel={(option) => option.label}
       value={options.find((o) => o.label === selectedValue) || null}
       onChange={(event, newValue) => onSelectItem(newValue?.label || "")}
       renderInput={(params) => (
         <TextField
-          sx={{
-            "& fieldset": { border: "none" },
-          }}
           {...params}
           fullWidth
           label={selectedValue ? undefined : "Country"}

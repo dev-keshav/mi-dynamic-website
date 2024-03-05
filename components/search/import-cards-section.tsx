@@ -4,6 +4,8 @@ import Pagination from "../shared/pagination"
 import React,{ useEffect, useState } from "react"
 import ScheduleDemo from "./schedule-demo"
 import { useData } from "@/context/store"
+import CircularProgress from '@mui/material/CircularProgress';
+import Box from '@mui/material/Box';
 
 
 
@@ -120,37 +122,58 @@ const ImportCardSection:  React.FC<ImportCardSectionProps> = ({ product })  => {
   return (
     <>
     
-      {importersData.map(
-        ({ importer, product_desc, count, href, country, company_code }, index) => (
+    {importer ? (
+        <>
+        {importersData.map(
+        (
+          { importer, product_desc, count, href, country, company_code },
+          index
+        ) => (
           <>
-          <ImportCard
-            key={`${importer}_${count}_${company_code}`}
-            company={importer}
-            des={product_desc}
-            quantity={`${count}` + ' Shipment match' + ` ${processMatchArray(match)}`}
-            href={href || ''}
-            type='Importer'
-            location={country}
-          />
-          {(((index + 1 ) % 5 === 0 && index !== 9)&&(
-            <div className="mt-14">
-            <h3 className="py-9 mt-6 mb-6 pr-[12%] flex items-center justify-between text-center text-m font-semibold  shadow-custom-faq-shadow " style={{ background: '#f89a2f' }}>
-            <div className="text-[#ffff] flex flex-col pl-6 " style={{fontFamily:'Roboto, sans-serif',fontWeight:'400',fontSize:'26px'}}> Request for All Importers
-            <div style={{fontSize:'20px'}}>(with their shipment details)</div>
-            </div>
-              <button
-                className="h-12 rounded-full bg-[#f89a2f] border-2 border-solid border-[#ffff] px-5 text-[16px] text-white font-semibold transition duration-1000 hover:bg-white hover:text-[#f89a2f]" style={{fontWeight:'500', cursor:'pointer'}}
-              >
-                Request A Demo
-              </button>
-            </h3>
-          </div>
-          ))}
+            <ImportCard
+              key={`${importer}_${count}_${company_code}`}
+              company={importer}
+              des={product_desc}
+              quantity={
+                `${count}` + " Shipment match" + ` ${processMatchArray(match)}`
+              }
+              href={href || ""}
+              type="Importer"
+              location={country}
+            />
+            {(index + 1) % 5 === 0 && index !== 9 && (
+              <div className="mt-14">
+                <h3
+                  className="text-m my-6 flex items-center justify-between py-9 pr-[12%] text-center font-semibold shadow-custom-faq-shadow"
+                  style={{ background: "#f89a2f" }}
+                >
+                  <div
+                    className="flex flex-col pl-6 text-[#ffff] "
+                    style={{
+                      fontFamily: "Roboto, sans-serif",
+                      fontWeight: "400",
+                      fontSize: "26px",
+                    }}
+                  >
+                    {" "}
+                    Request for All Importers
+                    <div style={{ fontSize: "20px" }}>
+                      (with their shipment details)
+                    </div>
+                  </div>
+                  <button
+                    className="h-12 rounded-full border-2 border-solid border-[#ffff] bg-[#f89a2f] px-5 text-[16px] font-semibold text-white transition duration-1000 hover:bg-white hover:text-[#f89a2f]"
+                    style={{ fontWeight: "500", cursor: "pointer" }}
+                  >
+                    Request A Demo
+                  </button>
+                </h3>
+              </div>
+            )}
           </>
-          
         )
       )}
-            {showDemo && (
+      {showDemo && (
         <ScheduleDemo
           handleKeyPress={(e) => {
             if (e.key === "Escape") {
@@ -162,18 +185,12 @@ const ImportCardSection:  React.FC<ImportCardSectionProps> = ({ product })  => {
           }}
         />
       )}
-      {/* <div className="mt-14">
-        <h3 className="py-9 mt-6 pr-[12%] flex items-center justify-between text-center text-m font-semibold  shadow-custom-faq-shadow " style={{ background: '#f89a2f' }}>
-        <div className="text-[#ffff] flex flex-col pl-6 " style={{fontFamily:'Roboto, sans-serif',fontWeight:'400',fontSize:'26px'}}> Request for All Importers
-        <div style={{fontSize:'20px'}}>(with their shipment details)</div>
-        </div>
-          <button
-            className="h-12 rounded-full bg-[#f89a2f] border-2 border-solid border-[#ffff] px-5 text-[16px] text-white font-semibold transition duration-1000 hover:bg-white hover:text-[#f89a2f]" style={{fontWeight:'500', cursor:'pointer'}}
-          >
-            Request A Demo
-          </button>
-        </h3>
-      </div> */}
+        </>
+      ) : (
+        <Box sx={{ display: 'flex', justifyContent: 'center' }}>
+        <CircularProgress color="inherit" />
+        </Box>
+      )}
       <Pagination
         className="mx-0 mt-8"
         total={70}

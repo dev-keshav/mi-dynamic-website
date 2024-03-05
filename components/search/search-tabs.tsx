@@ -8,6 +8,8 @@ import {
   useSearchParams,
 } from "next/navigation"
 import { countries, countries_with_flag, searchTabConfig } from "@/constants"
+import Chip from "@mui/material/Chip"
+import Stack from "@mui/material/Stack"
 import { Grid, Pointer } from "lucide-react"
 import tippy from "tippy.js"
 
@@ -23,10 +25,12 @@ import ScheduleDemo from "./schedule-demo"
 import ShipmentRecordsTable from "./shipment-records-table"
 import "tippy.js/dist/tippy.css"
 import { useData } from "@/context/store"
+import CircularProgress from "@mui/material/CircularProgress"
 import Select, { ActionMeta, SingleValue, components } from "react-select"
 
 import { Button } from "../ui/button"
 import ExportCardSection from "./export-cards-section"
+import SelectBoxDropDown from "../form/select-box-droptdown"
 
 export default function SearchTabs({
   params,
@@ -37,6 +41,7 @@ export default function SearchTabs({
   const searchParams = useSearchParams()
   const router = useRouter()
   const paramsData: { [key: string]: string } = {}
+  const [loading, setLoading] = useState(true)
 
   const [tabItem, setTabItem] = useState<string[]>([])
 
@@ -61,10 +66,10 @@ export default function SearchTabs({
   const [title2, settitle2] = useState("")
   const { setImporter, setExporter, setTrade, importer, trade, exporter } =
     useData()
-  const type = params.type
+  const type = params?.type
   useEffect(() => {
     // Update tooltip content based on params.type
-    if (params.type === "importer") {
+    if (params?.type === "importer") {
       interface importDataState {
         total_importers: number
         foreign_suppliers?: number
@@ -80,7 +85,7 @@ export default function SearchTabs({
       settitle2(``)
       /////Total Foreign Suppliers -
       //  ${'foreign_suppliers' in importer ? importer.foreign_suppliers : 0}`);
-    } else if (params.type === "exporter") {
+    } else if (params?.type === "exporter") {
       interface exportDataState {
         total_exporters: number
         foreign_buyers?: number
@@ -94,7 +99,7 @@ export default function SearchTabs({
       settitle1(`Exporters in ${paramsData.country} - ${data.total_exporters}`),
         settitle2(``)
       ////Foreign Buyers -
-    } else if (params.type === "trade") {
+    } else if (params?.type === "trade") {
       interface DataState {
         total_shipments: number
         total_value_usd: number
@@ -149,6 +154,7 @@ export default function SearchTabs({
       const exporterRequestbody: RequestBodyType = {
         data_type: "detailed_exports",
       }
+
 
       const country = paramsData.country
       if (country) tradeRequestbody.country = country
@@ -259,7 +265,7 @@ export default function SearchTabs({
           }
         )
 
-        console.log(exporterRequestbody)
+        // console.log(exporterRequestbody)
         setExporter(response.data)
       } catch (error) {
         console.error(error)
@@ -280,6 +286,7 @@ export default function SearchTabs({
         console.error(error)
         setTrade(error)
       }
+      setLoading(false)
     }
 
     fetchData()
@@ -298,12 +305,14 @@ export default function SearchTabs({
         const regex = new RegExp(`[?&]${x}=[^&]*`, "g")
         modifiedUrl = modifiedUrl.replace(regex, "")
 
+        
         // Clean up any leftover '?' or '&' and replace multiple '&' with a single '&'
         modifiedUrl = modifiedUrl
-          .replace(/^&/, "")
-          .replace(/&&+/g, "&")
-          .replace(/&$/, "")
-
+        .replace(/^&/, "")
+        .replace(/&&+/g, "&")
+        .replace(/&$/, "")
+        
+        
         // Re-add the '?' at the beginning if there are remaining query parameters
         if (modifiedUrl.includes("=")) {
           modifiedUrl = "" + modifiedUrl
@@ -321,6 +330,7 @@ export default function SearchTabs({
       ...provided,
       display: "flex",
       alignItems: "center",
+      width: '10vw',
     }),
   }
   interface CountryOption {
@@ -375,7 +385,7 @@ export default function SearchTabs({
   }
 
   return (
-    <Tabs defaultValue={params.type} className="w-full p-0  ">
+    <Tabs defaultValue={params?.type} className="w-full p-0  ">
       <div style={{ display: "flex", justifyContent: "space-between" }}>
         <div>
           {tabItem.map((x, index) => (
@@ -383,26 +393,16 @@ export default function SearchTabs({
               key={index}
               style={{
                 display: "-webkit-inline-box",
-                background: "#a1a1a1",
-                color: "#fff",
-                fontSize: "14px",
-                fontWeight: 400,
-                padding: "5px 15px",
-                fontFamily: "Roboto, sans-serif",
-                borderRadius: "2px",
                 marginRight: "10px",
-                marginBottom: "10px",
               }}
             >
               {Object.entries(x).map(([key, value]) => (
                 <>
-                  <p key={key}>{` ${value}`}</p>
-                  <button
-                    className="cursor-pointer ml-2 font-bold"
-                    onClick={handletabclick(key)}
-                  >
-                    x
-                  </button>
+                  <Chip
+                    key={key}
+                    label={` ${value}`}
+                    onDelete={handletabclick(key)}
+                  />
                 </>
               ))}
             </div>
@@ -416,19 +416,31 @@ export default function SearchTabs({
             style={{ fontSize: "14px", fontWeight: 400 }}
           >
             {title1.split(" - ")[0]} {" - "}
-            <strong className="font-bold" style={{ fontSize: "14px" }}>
-              {title1.split(" - ")[1]}
-            </strong>
+            {loading ? (
+              <CircularProgress size="1rem" color="inherit" />
+            ) : (
+              <>
+                <strong className="font-bold" style={{ fontSize: "14px" }}>
+                  {title1 ? title1.split(" - ")[1] : ""}
+                </strong>
+              </>
+            )}
           </span>
           <span
             className="spreUsdVle mr-3"
             id="tooltip"
             style={{ fontSize: "14px", fontWeight: 400 }}
           >
-            {title2.split(" - ")[0]} {title2 && " - "}
-            <strong className="font-bold" style={{ fontSize: "14px" }}>
-              {title2.split(" - ")[1]}
-            </strong>
+            {title2.split(" - ")[0]} {" -"}
+            {loading ? (
+              <CircularProgress size="1rem" color="inherit" />
+            ) : (
+              <>
+                <strong className="font-bold" style={{ fontSize: "14px" }}>
+                  {title2 ? title2.split(" - ")[1] : ""}
+                </strong>
+              </>
+            )}
           </span>
         </div>
         <div style={{ display: "-webkit-inline-box" }}>
@@ -439,7 +451,6 @@ export default function SearchTabs({
             Edit Column
             <MyDialog />
           </div>
-
           <Select<CountryOption>
             options={countryValues}
             value={selectedOption}
@@ -448,25 +459,25 @@ export default function SearchTabs({
             formatOptionLabel={formatOptionLabel}
             components={{ SingleValue: customSingleValue }}
             styles={customStyles}
-            className="w-[200px]  nowrap"
+            className="nowrap mb-2 ml-2"
             placeholder="Reporting Country"
           />
 
-          {/* <SelectBox
-          placeholder={searchParams.get('country')||'Reporting country'}
-          className="w-18 h-6 pt-0 "
-          options={countryValues}
-          isSearchable
-          isReportingCountry
-        /> */}
+          {/* <div>
+            <SelectBoxDropDown placeholder="Country"
+            // className="h-full rounded-none border-0 focus:ring-0 "
+            options={countryValues}
+            isSearchable
+          />
+          </div> */}
         </div>
       </div>
-      <TabsList className="h-auto w-full rounded-none bg-transparent p-0 border-none">
+      <TabsList className="h-auto w-full rounded-none border-none bg-transparent p-0">
         {searchTabConfig.map(({ label, value, icon }) => (
           <TabsTrigger
             key={`${label}_${value}`}
             value={value}
-            className="mx-[3px] mb-3 h-[42px] w-1/4 rounded-none  border-[1px] border-solid border-b-solid bg-white py-0 text-base font-bold text-dark-liver data-[state=active]:bg-dark-liver data-[state=active]:text-white data-[state=active]:border-0"
+            className="border-b-solid mx-[3px] mb-3 h-[42px] w-1/4  rounded-none border-[1px] border-solid bg-white py-0 text-base font-bold text-dark-liver data-[state=active]:border-0 data-[state=active]:bg-dark-liver data-[state=active]:text-white"
             onClick={() => {
               debugger
               router.replace(handelLocation(value, pathname, searchParams), {

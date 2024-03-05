@@ -5,6 +5,7 @@ import styles from "./ImporterExTurnover.module.css";
 import { Col, Row } from "react-bootstrap";
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import BuyerAndSupplyerGraph from "./buyerAndSupplyerGraph";
 
 const BuyerSupplyer = () => {
 
@@ -111,7 +112,8 @@ const BuyerSupplyer = () => {
                         <Col md={12} lg={12}>
                      
                             <div  className={styles.Hidevigedaa}>
-                            <img src="../../treegraph.png" width="100%" />
+                            {/* <img src="../../treegraph.png" width="100%" /> */}
+                            {/* <BuyerAndSupplyerGraph /> */}
                             <div className={styles.mapGrhide}>
                                 <div className={styles.MainLockdata}>
                                     <div className={styles.lockImgdta}>

@@ -40,7 +40,7 @@ const ImpExpCommodities = () => {
         );
         var res = response.data;
         setRes(res); // Update the state with the fetched data
-        console.log(response.data);
+        // console.log(response.data);
       } catch (error) {
         console.error("Error:", error);
       }
@@ -71,9 +71,10 @@ const ImpExpCommodities = () => {
         );
         var importData = response.data.imports;
         setRess(importData);
+        console.log("This is ress dataaaa: ", importData)
         var exportData = response.data.exports;
         setResex(exportData);
-        console.log(response.data);
+        // console.log(response.data);
       } catch (error) {
         console.error("Error fetching company turnover:", error);
       }
@@ -91,12 +92,26 @@ const ImpExpCommodities = () => {
 
 
 
-  const mapChartData = (data) => {
-    return data?.map((item, index) => ({
-      label: item.commodity,
+  const mapChartData = (data, commodityLimit, labelLimit) => {
+    // Check if data is null or undefined
+    if (!data) {
+      return [];
+    }
+  
+    const uniqueCommodities = [...new Set(data.map((item) => item.commodity))];
+  
+    // Take data for the first `commodityLimit` unique commodities
+    const filteredData = data.filter((item) => {
+      return uniqueCommodities.indexOf(item.commodity) < commodityLimit;
+    });
+  
+    return filteredData.map((item, index) => ({
+      label: item.commodity.substring(0, labelLimit),
       y: parseFloat(item.percentage),
     }));
   };
+  
+  
 
 
 
@@ -128,22 +143,10 @@ const ImpExpCommodities = () => {
       labelFontColor: "#fd9852",
     },
     data: [
-      // {
-      //   type: "column",
-      //   yValueFormatString: '#,##0.0#"%"',
-      //   dataPoints: [
-      //     { label: "Asses", y: 7.1 },
-      //     { label: "Meat", y: 6.7 },
-      //     { label: "Horses", y: 5.0 },
-      //     { label: "Asses", y: 2.5 },
-      //     { label: "Meat", y: 2.3 },
-      //   ],
-      // },
-  
       {
         type: "column",
         yValueFormatString: '#,##0.0#"%"',
-        dataPoints: mapChartData(ress),
+        dataPoints: mapChartData(ress, 4, 20), // Limit to 4 commodities, 20 characters for label
       },
     ],
   };
@@ -189,7 +192,7 @@ const ImpExpCommodities = () => {
       {
         type: "column",
         yValueFormatString: '#,##0.0#"%"',
-        dataPoints: mapChartData(resex),
+        dataPoints: mapChartData(resex, 4, 20),
       },
     ],
   };

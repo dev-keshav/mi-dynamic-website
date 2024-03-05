@@ -63,7 +63,7 @@ const CompanyOverview = () => {
             />
           ))}
         </div>
-        <div className="flex h-full w-full flex-col items-center justify-center gap-5 bg-old-lace py-11 text-black transition-colors hover:bg-dark-lava hover:text-white">
+        {/* <div className="flex h-full w-full flex-col items-center justify-center gap-5 bg-old-lace py-11 text-black transition-colors hover:bg-dark-lava hover:text-white">
           <Image src="/lockdata.png" alt="lock" height={32} width={32} unoptimized={true}/>
           <div className="w-1/2 text-center text-base font-bold ">
             This information is available in the Market Inside Platform. To
@@ -75,7 +75,7 @@ const CompanyOverview = () => {
           >
             Schedule a Demo
           </button>
-        </div>
+        </div> */}
       </div>
     </>
   )

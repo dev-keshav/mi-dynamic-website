@@ -1,3 +1,4 @@
+"use client"
 import { Input } from "../ui/input"
 
 const ScheduleDemoInput = ({
@@ -18,7 +19,7 @@ const ScheduleDemoInput = ({
     <>
       <div className="mb-2 text-[15px] font-semibold text-black">{label}</div>
       <Input
-        className="rounded-none px-2 text-black border-solid border-2"
+        className="rounded-none border-2 border-solid px-2 text-black"
         value={value}
         onChange={(e) => onChange(e, name)}
         placeholder={placeholder ?? label}

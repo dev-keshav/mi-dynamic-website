@@ -39,7 +39,7 @@ const CompetitorsImpExp = () => {
                         </div>
                         </Col>
                         <Col md={8} lg={8} >
-                            <Col md={6} className={ `${styles.boxitem} blur`}>
+                            <Col md={6} className={ `${styles.boxitem}`}>
                                 <Row>
                                     <h4 className="col-md-12" >Exxon Mobil Corporation</h4>
                                     <p className="col-md-6" >Import Turnover:  <br /> <b>154 Million</b> </p>

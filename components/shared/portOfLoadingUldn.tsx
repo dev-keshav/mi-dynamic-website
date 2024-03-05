@@ -38,8 +38,8 @@ const options = {
         { y: 878, label: "Amritsar ACC" },
         // { y: 540, label: "Ankaleshwar ICD" },
         //  { y: 649, label: "Ballabgarh ICD" },
-        //{ y: 549, label: "Bangalore Air" },
-        //{ y: 449, label: "Bangalore ICD" },
+        // { y: 549, label: "Bangalore Air" },
+        // { y: 449, label: "Bangalore ICD" },
         // { y: 539, label: "Bhusawal ICD" }
       ],
     },
